@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
+  <rect x="10" y="10" width="80" height="80" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="50" y="38" font-family="serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#1a1a1a">ROLLS</text>
+  <line x1="15" y1="50" x2="85" y2="50" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="50" y="67" font-family="serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#1a1a1a">ROYCE</text>
+  <rect x="28" y="74" width="44" height="8" fill="#1a1a1a"/>
+  <text x="50" y="81" font-family="serif" font-size="7" font-weight="bold" text-anchor="middle" fill="white">RR</text>
+  <text x="130" y="60" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1a1a1a">Rolls-Royce</text>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <text x="100" y="52" font-family="Arial, sans-serif" font-size="26" font-weight="bold" letter-spacing="3" text-anchor="middle" fill="#e20612">VAUXHALL</text>
+  <path d="M12 20 L28 20 L40 40 L28 60 L12 60 L24 40 Z" fill="#e20612"/>
+  <path d="M18 25 L30 25 L39 40 L30 55 L18 55 L27 40 Z" fill="white"/>
+</svg>
