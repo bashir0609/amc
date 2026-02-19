@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingCalendar from "@/components/BookingCalendar";
 import TimeSlotPicker from "@/components/TimeSlotPicker";
-import { Calendar, User, Car, MessageSquare, CheckCircle, Clock, Shield } from "lucide-react";
+import { Calendar, ChevronLeft, ChevronRight, Clock, CheckCircle2, Info, Loader2, AlertCircle, User, Car, MessageSquare, Shield } from "lucide-react";
+import PageHero from "@/components/PageHero";
 import { formatDate } from "@/lib/availability";
 
 export default function MOTBookingPage() {
@@ -111,7 +112,7 @@ export default function MOTBookingPage() {
       description: "Fully certified testing station",
     },
     {
-      icon: CheckCircle,
+      icon: CheckCircle2,
       title: "Instant Confirmation",
       description: "Email confirmation immediately",
     },
@@ -122,17 +123,16 @@ export default function MOTBookingPage() {
       <Header />
       <main className="pt-20 min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="section-padding bg-gradient-primary text-white">
-          <div className="container-custom text-center">
-            <Calendar className="w-16 h-16 mx-auto mb-6 animate-float" />
-            <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6">
-              Book Your MOT Online
-            </h1>
-            <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto">
-              Quick and easy online booking for your MOT test
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Book Your MOT Online"
+          subtitle="Fast, fair, and reliable MOT testing. Book your slot online today and ensure your vehicle is roadworthy and legal."
+          badge={
+            <>
+              <Calendar className="w-4 h-4 text-accent-400" />
+              <span className="text-white/90 text-sm font-medium">Class 4 & 7 Available</span>
+            </>
+          }
+        />
 
         {/* Features Section */}
         <section className="section-padding bg-white">

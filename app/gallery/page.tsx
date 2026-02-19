@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 import { Images } from "lucide-react";
+import PageHero from "@/components/PageHero";
 
 export default function GalleryPage() {
   // Placeholder gallery items - replace with actual images
@@ -21,17 +23,16 @@ export default function GalleryPage() {
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="section-padding bg-gradient-primary text-white">
-          <div className="container-custom text-center">
-            <Images className="w-16 h-16 mx-auto mb-6" />
-            <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6">
-              Gallery
-            </h1>
-            <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto">
-              Take a look at our facility and the work we do
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Gallery"
+          subtitle="Take a look at our workshop, our team in action, and some of the vehicles we've had the pleasure of working on."
+          badge={
+            <>
+              <Images className="w-4 h-4 text-accent-400" />
+              <span className="text-white/90 text-sm font-medium">Our Workshop & Projects</span>
+            </>
+          }
+        />
 
         {/* Gallery Grid */}
         <section className="section-padding bg-white">

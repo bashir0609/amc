@@ -3,27 +3,12 @@ import { Calendar, Phone, ArrowRight, Shield, Clock, Star, ChevronDown } from "l
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800" />
-
-      {/* Decorative orbs */}
-      <div className="absolute top-[-100px] right-[-80px] w-[600px] h-[600px] bg-accent-600/8 rounded-full blur-[140px]" />
-      <div className="absolute bottom-[-80px] left-[-60px] w-[400px] h-[400px] bg-primary-600/20 rounded-full blur-[100px]" />
-
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.035]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)`,
-          backgroundSize: "72px 72px",
-        }}
-      />
-
-      {/* Diagonal accent stripe */}
-      <div className="absolute right-0 top-0 w-1/3 h-full opacity-5"
-        style={{ background: "linear-gradient(135deg, transparent 50%, rgba(227,30,36,0.5) 100%)" }}
-      />
+    <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800">
+      {/* Background Patterns */}
+      <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+      <div className="absolute right-0 top-0 w-1/2 h-full opacity-5" style={{ background: "linear-gradient(135deg, transparent 40%, rgba(227,30,36,0.6) 100%)" }} />
+      <div className="absolute -right-20 -top-20 w-96 h-96 bg-accent-600/10 rounded-full blur-[100px]" />
+      <div className="absolute -left-20 -bottom-20 w-72 h-72 bg-primary-500/10 rounded-full blur-[80px]" />
 
       {/* Content */}
       <div className="relative z-10 container-custom py-20 md:py-22">

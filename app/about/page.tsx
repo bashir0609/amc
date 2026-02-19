@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Award, Users, Target, CheckCircle } from "lucide-react";
+import { CheckCircle2, Award, Users, History, ArrowRight, Target } from "lucide-react";
+import PageHero from "@/components/PageHero";
 
 export default function AboutPage() {
   const values = [
@@ -38,16 +39,10 @@ export default function AboutPage() {
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="section-padding bg-gradient-primary text-white">
-          <div className="container-custom text-center">
-            <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6">
-              About Us
-            </h1>
-            <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto">
-              Your trusted family-owned garage in Manor Park, London
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="About Us"
+          subtitle="Family-owned and operated since 1990. We take pride in delivering honest, reliable, and high-quality automotive services to the Manor Park community."
+        />
 
         {/* Our Story */}
         <section className="section-padding bg-white">
@@ -114,7 +109,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {achievements.map((achievement, index) => (
                 <div key={index} className="flex items-start space-x-3">
-                  <CheckCircle className="w-6 h-6 text-primary-600 mt-1 flex-shrink-0" />
+                  <CheckCircle2 className="w-6 h-6 text-primary-600 mt-1 flex-shrink-0" />
                   <p className="text-lg text-gray-700">{achievement}</p>
                 </div>
               ))}

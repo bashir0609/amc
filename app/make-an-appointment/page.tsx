@@ -4,7 +4,8 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Calendar, User, MessageSquare, Wrench, CheckCircle } from "lucide-react";
+import { Calendar, Clock, Car, User, Phone, Mail, MessageSquare, CheckCircle2, ChevronRight, AlertCircle, Loader2, Wrench } from "lucide-react";
+import PageHero from "@/components/PageHero";
 
 const serviceTypes = [
   "MOT Testing",
@@ -99,7 +100,7 @@ function AppointmentForm() {
       {/* Pre-selected service banner */}
       {preselectedService && (
         <div className="mb-6 flex items-center gap-3 bg-primary-50 border border-primary-100 rounded-xl px-4 py-3">
-          <CheckCircle className="w-5 h-5 text-primary-700 flex-shrink-0" />
+          <CheckCircle2 className="w-5 h-5 text-primary-700 flex-shrink-0" />
           <p className="text-primary-800 text-sm font-medium">
             Service pre-selected: <strong>{formData.serviceType || preselectedService}</strong>
           </p>
@@ -292,20 +293,17 @@ export default function MakeAppointmentPage() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="bg-primary-700 text-white py-16 px-4">
-          <div className="container-custom text-center">
-            <p className="inline-flex items-center gap-2 text-accent-300 font-semibold text-sm uppercase tracking-widest mb-4">
+        <PageHero
+          title="Make an Appointment"
+          subtitle="Book your vehicle in for a service, MOT, or repair. Choose a convenient time and let our expert team take care of the rest."
+          badge={
+            <>
               <span className="w-6 h-px bg-accent-400 inline-block" />
               Online Booking
-            </p>
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-              Make an Appointment
-            </h1>
-            <p className="text-blue-100 text-lg max-w-xl mx-auto">
-              Schedule your vehicle service at a time that works for you.
-            </p>
-          </div>
-        </section>
+              <span className="w-6 h-px bg-accent-400 inline-block" />
+            </>
+          }
+        />
 
         {/* Form */}
         <section className="section-padding bg-white">

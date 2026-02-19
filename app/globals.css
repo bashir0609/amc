@@ -166,3 +166,17 @@ h1, h2, h3, h4, h5, h6 {
 .brands-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Layout Fixes */
+main {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+header {
+  margin-bottom: 0 !important;
+}
+
+.max-w-screen-2xl {
+  max-width: 1536px;
+}

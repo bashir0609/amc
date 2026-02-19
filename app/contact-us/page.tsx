@@ -3,7 +3,8 @@
 import { useState, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mail, MapPin, Clock, Send, Phone, Paperclip, X, ImageIcon } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Facebook, Instagram, Twitter, Paperclip, X, ImageIcon } from "lucide-react";
+import PageHero from "@/components/PageHero";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -79,18 +80,16 @@ export default function ContactPage() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="bg-primary-700 text-white py-16 px-4">
-          <div className="container-custom text-center">
-            <p className="inline-flex items-center gap-2 text-accent-300 font-semibold text-sm uppercase tracking-widest mb-4">
-              <span className="w-6 h-px bg-accent-400 inline-block" />
-              Get In Touch
-            </p>
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">Contact Us</h1>
-            <p className="text-blue-100 text-lg max-w-xl mx-auto">
-              Send us a message, attach a photo of your problem, or just give us a call.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Contact Us"
+          subtitle="Get in touch with our friendly team. Whether you need to book a service, ask a question, or get a quote, we're here to help."
+          badge={
+            <>
+              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+              <span className="text-white/90 text-sm font-medium">We're Open Today · 8:30 AM - 6:00 PM</span>
+            </>
+          }
+        />
 
         {/* Contact Info & Form */}
         <section className="section-padding bg-white">

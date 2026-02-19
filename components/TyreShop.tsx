@@ -171,7 +171,7 @@ export default function TyreShop() {
   return (
     <>
       {/* ─── Hero Banner ─────────────────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 min-h-[50vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5" style={{ background: "linear-gradient(135deg, transparent 40%, rgba(227,30,36,0.6) 100%)" }} />
         <div className="absolute -right-20 -top-20 w-96 h-96 bg-accent-600/10 rounded-full blur-[100px]" />
@@ -396,6 +396,7 @@ export default function TyreShop() {
 
                       <div className="flex gap-2">
                         <button
+                          type="button"
                           onClick={() => addToCart(tyre)}
                           className={`flex-1 flex items-center justify-center gap-2 font-semibold text-sm py-2.5 rounded-xl transition-all duration-200 ${
                             addedId === tyre.id
@@ -561,7 +562,11 @@ export default function TyreShop() {
               <Link
                 href="/shop/enquiry"
                 onClick={() => {
-                  setCart([{ tyre: enquiryTyre, qty: 1 }]); // Add single item to cart immediately
+                  setCart((prev) => {
+                    const exists = prev.find((item) => item.tyre.id === enquiryTyre.id);
+                    if (exists) return prev; // Already in cart
+                    return [...prev, { tyre: enquiryTyre, qty: 1 }];
+                  });
                   setEnquiryTyre(null);
                 }}
                 className="flex items-center justify-center gap-2 w-full border-2 border-gray-200 hover:border-primary-300 text-gray-600 hover:text-primary-700 font-semibold py-3 rounded-xl transition-all text-sm"

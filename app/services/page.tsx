@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { CheckCircle, Wrench, Car, Gauge, Droplet, Battery } from "lucide-react";
+import { Wrench, Gauge, Battery, Disc, Zap, Beaker, Cog, Search, ArrowRight, CheckCircle2, Car, Droplet } from "lucide-react";
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
 
 export default function ServicesPage() {
   const services = [
@@ -84,17 +85,10 @@ export default function ServicesPage() {
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="section-padding bg-gradient-primary text-white">
-          <div className="container-custom text-center">
-            <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6">
-              Our Services
-            </h1>
-            <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto">
-              Professional vehicle maintenance and repair services at competitive
-              prices
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Our Services"
+          subtitle="Comprehensive automotive care for all makes and models. From routine maintenance to complex repairs, our expert team has you covered."
+        />
 
         {/* Services Grid */}
         <section className="section-padding bg-white">
@@ -117,7 +111,7 @@ export default function ServicesPage() {
                     <ul className="space-y-2 mb-6">
                       {service.features.map((feature, i) => (
                         <li key={i} className="flex items-start space-x-2">
-                          <CheckCircle className="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" />
                           <span className="text-gray-700">{feature}</span>
                         </li>
                       ))}

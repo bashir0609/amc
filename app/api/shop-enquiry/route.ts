@@ -1,20 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { resend } from "@/lib/resend";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { name, email, phone, reg, date, notes, cart, total } = body;
-
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: parseInt(process.env.SMTP_PORT || "587"),
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
 
     const itemsHtml = cart
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -75,19 +65,21 @@ export async function POST(request: NextRequest) {
       </div>
     `;
 
-    // Send to garage
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || "noreply@automotcentre.com",
-      to: process.env.SMTP_TO || "info@automotcentre.com",
-      replyTo: email,
+    // Send using Resend
+    const toEmails = (process.env.RESEND_TO || "info@automotcentre.com").split(",").map(e => e.trim());
+    
+    await resend.emails.send({
+      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@automotcentre.com>",
+      to: toEmails,
+      replyTo: email, 
       subject: emailSubject,
       html: htmlContent,
     });
 
     // Send confirmation to customer
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || "noreply@automotcentre.com",
-      to: email,
+    await resend.emails.send({
+      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@automotcentre.com>",
+      to: [email],
       subject: "We received your tyre enquiry — Auto MOT Centre",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">

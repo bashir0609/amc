@@ -1,22 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { resend } from "@/lib/resend";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { type, ...formData } = body;
-
-    // Configure email transporter
-    // Note: You'll need to configure these environment variables
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: parseInt(process.env.SMTP_PORT || "587"),
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
 
     // Prepare email content based on booking type
     let subject = "";
@@ -89,18 +77,20 @@ export async function POST(request: NextRequest) {
       `;
     }
 
-    // Send email
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || "noreply@automotcentre.com",
-      to: process.env.SMTP_TO || "info@automotcentre.com",
+    // Send email using Resend
+    const toEmails = (process.env.RESEND_TO || "info@automotcentre.com").split(",").map(e => e.trim());
+
+    await resend.emails.send({
+      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@automotcentre.com>",
+      to: toEmails,
       subject: subject,
       html: htmlContent,
     });
 
     // Send confirmation email to customer
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || "noreply@automotcentre.com",
-      to: formData.email,
+    await resend.emails.send({
+      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@automotcentre.com>",
+      to: [formData.email],
       subject: "Booking Confirmation - Auto MOT Centre",
       html: `
         <h2>Thank you for your booking!</h2>
