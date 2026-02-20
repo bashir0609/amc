@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MapPin, Phone, Mail, Clock, Send, Facebook, Instagram, Twitter, Paperclip, X, ImageIcon } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Paperclip, X, ImageIcon } from "lucide-react";
 import PageHero from "@/components/PageHero";
 
 export default function ContactPage() {
@@ -86,7 +86,7 @@ export default function ContactPage() {
           badge={
             <>
               <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-white/90 text-sm font-medium">We're Open Today · 8:30 AM - 6:00 PM</span>
+              <span className="text-white/90 text-sm font-medium">We&apos;re Open Today · 8:30 AM - 6:00 PM</span>
             </>
           }
         />

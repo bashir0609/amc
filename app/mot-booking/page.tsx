@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingCalendar from "@/components/BookingCalendar";
 import TimeSlotPicker from "@/components/TimeSlotPicker";
-import { Calendar, ChevronLeft, ChevronRight, Clock, CheckCircle2, Info, Loader2, AlertCircle, User, Car, MessageSquare, Shield } from "lucide-react";
+import { Calendar, Clock, CheckCircle2, User, Car, MessageSquare, Shield } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { formatDate } from "@/lib/availability";
 
@@ -79,7 +79,7 @@ export default function MOTBookingPage() {
       } else {
         setSubmitStatus("error");
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);

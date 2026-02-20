@@ -64,6 +64,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative w-60 h-16 flex items-center justify-start transition-all duration-300 group-hover:scale-105">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/logo.png" alt="AMC Logo" className="w-full h-full object-contain drop-shadow-md" />
               </div>
             </Link>

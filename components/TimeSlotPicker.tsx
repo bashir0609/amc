@@ -1,7 +1,7 @@
 "use client";
 
 import { Clock } from "lucide-react";
-import { getAvailableSlots, formatDate, TimeSlot } from "@/lib/availability";
+import { getAvailableSlots, formatDate } from "@/lib/availability";
 
 interface TimeSlotPickerProps {
   selectedDate: Date;

@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { CheckCircle2, Award, Users, History, ArrowRight, Target } from "lucide-react";
+import { CheckCircle2, Award, Users, Target } from "lucide-react";
 import PageHero from "@/components/PageHero";
 
 export default function AboutPage() {

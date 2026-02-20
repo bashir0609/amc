@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Calendar, Clock, Car, User, Phone, Mail, MessageSquare, CheckCircle2, ChevronRight, AlertCircle, Loader2, Wrench } from "lucide-react";
+import { Calendar, User, MessageSquare, CheckCircle2, Wrench } from "lucide-react";
 import PageHero from "@/components/PageHero";
 
 const serviceTypes = [

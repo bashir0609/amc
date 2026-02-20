@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X, Calendar, User, Car, Mail, Phone, MessageSquare } from "lucide-react";
+import { X, Calendar, User, Car, MessageSquare } from "lucide-react";
 import BookingCalendar from "./BookingCalendar";
 import TimeSlotPicker from "./TimeSlotPicker";
 import { formatDate } from "@/lib/availability";
@@ -68,7 +68,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       } else {
         setSubmitStatus("error");
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);

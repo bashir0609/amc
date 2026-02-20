@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calendar, Phone, ArrowRight, Shield, Clock, Star, ChevronDown } from "lucide-react";
+import { Calendar, Phone, Shield, Clock, Star, ChevronDown } from "lucide-react";
 
 export default function Hero() {
   return (

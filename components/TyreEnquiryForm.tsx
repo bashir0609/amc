@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { CheckCircle, ArrowLeft, Loader2, Calendar, Phone, Mail, User, Car } from "lucide-react";
 import Link from "next/link";
 
@@ -20,7 +19,6 @@ interface CartItem {
 }
 
 export default function TyreEnquiryForm() {
-  const router = useRouter();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);

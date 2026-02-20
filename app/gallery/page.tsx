@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Image from "next/image";
 import Footer from "@/components/Footer";
 import { Images } from "lucide-react";
 import PageHero from "@/components/PageHero";

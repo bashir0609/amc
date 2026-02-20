@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Wrench, Gauge, Battery, Disc, Zap, Beaker, Cog, Search, ArrowRight, CheckCircle2, Car, Droplet } from "lucide-react";
+import { Wrench, Gauge, Battery, CheckCircle2, Car, Droplet } from "lucide-react";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 

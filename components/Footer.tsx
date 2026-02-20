@@ -56,6 +56,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-white/10 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/logo.png" alt="AMC Logo" className="w-10 h-10 object-contain" />
               </div>
               <div className="font-heading font-bold text-lg text-white">
