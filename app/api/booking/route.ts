@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
     const toEmails = (process.env.RESEND_TO || "info@automotcentre.com").split(",").map(e => e.trim());
 
     await resend.emails.send({
-      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@automotcentre.com>",
+      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@updates.automotcentre.com>",
       to: toEmails,
       subject: subject,
       html: htmlContent,
@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to customer
     await resend.emails.send({
-      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@automotcentre.com>",
+      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@updates.automotcentre.com>",
       to: [formData.email],
       subject: "Booking Confirmation - Auto MOT Centre",
       html: `

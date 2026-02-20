@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,7 +16,7 @@ export async function POST(request: NextRequest) {
 
     // Collect photo attachments
     const photoFiles = formData.getAll("photos") as File[];
-    const attachments: { filename: string; content: Buffer; contentType: string }[] = [];
+    const attachments: { filename: string; content: Buffer }[] = [];
 
     for (const file of photoFiles) {
       if (file && file.size > 0) {
@@ -22,20 +24,9 @@ export async function POST(request: NextRequest) {
         attachments.push({
           filename: file.name,
           content: buffer,
-          contentType: file.type,
         });
       }
     }
-
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: parseInt(process.env.SMTP_PORT || "587"),
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
 
     const isRepairQuote = type === "repair-quote" || attachments.length > 0;
     const emailSubject = isRepairQuote
@@ -68,9 +59,9 @@ export async function POST(request: NextRequest) {
     `;
 
     // Send to garage
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || "noreply@automotcentre.com",
-      to: process.env.SMTP_TO || "info@automotcentre.com",
+    await resend.emails.send({
+      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@updates.automotcentre.com>",
+      to: process.env.RESEND_TO?.split(",").map(e => e.trim()) || ["info@automotcentre.com"],
       replyTo: email,
       subject: emailSubject,
       html: htmlContent,
@@ -78,9 +69,9 @@ export async function POST(request: NextRequest) {
     });
 
     // Send confirmation to customer
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || "noreply@automotcentre.com",
-      to: email,
+    await resend.emails.send({
+      from: process.env.RESEND_FROM || "Auto MOT Centre <noreply@updates.automotcentre.com>",
+      to: [email],
       subject: "We received your message — Auto MOT Centre",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

@@ -1,20 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingCalendar from "@/components/BookingCalendar";
 import TimeSlotPicker from "@/components/TimeSlotPicker";
-import { Calendar, Clock, CheckCircle2, User, Car, MessageSquare, Shield } from "lucide-react";
+import { Calendar, Clock, CheckCircle2, User, Car, MessageSquare, Shield, Search } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { formatDate } from "@/lib/availability";
+import { useSearchParams } from "next/navigation";
 
-export default function MOTBookingPage() {
+function MOTBookingForm() {
   const [step, setStep] = useState<"date" | "time" | "details">("date");
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [isFetchingVehicle, setIsFetchingVehicle] = useState(false);
+  const [vehicleError, setVehicleError] = useState("");
+  const [motExpiry, setMotExpiry] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -25,6 +29,43 @@ export default function MOTBookingPage() {
     vehicleModel: "",
     additionalNotes: "",
   });
+
+  const searchParams = useSearchParams();
+  const vrmParam = searchParams.get("vrm");
+
+  useEffect(() => {
+    if (vrmParam) {
+      // Step to Details to immediately show the form with pre-filled vehicle
+      setStep("details");
+      setFormData(prev => ({ ...prev, vehicleReg: vrmParam }));
+      
+      // Auto-trigger fetch if vrm parameter is provided
+      const fetchInitialVehicle = async () => {
+        setIsFetchingVehicle(true);
+        setVehicleError("");
+        try {
+          const res = await fetch(`/api/mot-history?vrm=${encodeURIComponent(vrmParam)}`);
+          if (res.ok) {
+            const data = await res.json();
+            setFormData(prev => ({
+              ...prev,
+              vehicleMake: data.make ? data.make.charAt(0) + data.make.slice(1).toLowerCase() : "",
+              vehicleModel: data.model ? data.model.charAt(0) + data.model.slice(1).toLowerCase() : "",
+            }));
+            if (data.motTests && data.motTests.length > 0) {
+              setMotExpiry(data.motTests[0].expiryDate);
+            }
+          }
+        } catch {
+          // Silent catch for auto-fetch
+        } finally {
+          setIsFetchingVehicle(false);
+        }
+      };
+      
+      fetchInitialVehicle();
+    }
+  }, [vrmParam]);
 
   const handleDateSelect = (date: Date) => {
     setSelectedDate(date);
@@ -40,6 +81,34 @@ export default function MOTBookingPage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleFetchVehicle = async () => {
+    if (!formData.vehicleReg) return;
+    setIsFetchingVehicle(true);
+    setVehicleError("");
+    setMotExpiry(null);
+
+    try {
+      const res = await fetch(`/api/mot-history?vrm=${encodeURIComponent(formData.vehicleReg)}`);
+      if (!res.ok) {
+        setVehicleError("Vehicle not found. Please check or enter manually.");
+        return;
+      }
+      const data = await res.json();
+      setFormData(prev => ({
+        ...prev,
+        vehicleMake: data.make ? data.make.charAt(0) + data.make.slice(1).toLowerCase() : "",
+        vehicleModel: data.model ? data.model.charAt(0) + data.model.slice(1).toLowerCase() : "",
+      }));
+      if (data.motTests && data.motTests.length > 0) {
+        setMotExpiry(data.motTests[0].expiryDate);
+      }
+    } catch {
+      setVehicleError("Error fetching vehicle data.");
+    } finally {
+      setIsFetchingVehicle(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -74,6 +143,8 @@ export default function MOTBookingPage() {
             vehicleModel: "",
             additionalNotes: "",
           });
+          setMotExpiry(null);
+          setVehicleError("");
           setSubmitStatus("idle");
         }, 5000);
       } else {
@@ -335,15 +406,31 @@ export default function MOTBookingPage() {
                           <label className="block text-gray-700 font-semibold mb-2">
                             Vehicle Registration *
                           </label>
-                          <input
-                            type="text"
-                            name="vehicleReg"
-                            value={formData.vehicleReg}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent uppercase"
-                            placeholder="AB12 CDE"
-                          />
+                          <div className="flex gap-2">
+                            <input
+                              type="text"
+                              name="vehicleReg"
+                              value={formData.vehicleReg}
+                              onChange={handleChange}
+                              required
+                              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent uppercase"
+                              placeholder="AB12 CDE"
+                            />
+                            <button
+                              type="button"
+                              onClick={handleFetchVehicle}
+                              disabled={isFetchingVehicle || !formData.vehicleReg}
+                              className="px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 disabled:opacity-50 transition-colors flex items-center"
+                            >
+                              {isFetchingVehicle ? "Finding..." : <><Search className="w-5 h-5 mr-2" /> Find</>}
+                            </button>
+                          </div>
+                          {vehicleError && <p className="text-red-500 text-sm mt-2">{vehicleError}</p>}
+                          {motExpiry && (
+                            <p className="text-green-600 font-medium text-sm mt-2 bg-green-50 p-2 rounded border border-green-200 inline-block">
+                              MOT Expires: {motExpiry}
+                            </p>
+                          )}
                         </div>
                         <div>
                           <label className="block text-gray-700 font-semibold mb-2">
@@ -465,5 +552,13 @@ export default function MOTBookingPage() {
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function MOTBookingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen pt-32 flex justify-center"><div className="w-8 h-8 rounded-full border-4 border-primary-500 border-t-transparent animate-spin"></div></div>}>
+      <MOTBookingForm />
+    </Suspense>
   );
 }

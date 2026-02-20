@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Clock, Facebook, Calendar, ArrowRight, Mail } from "lucide-react";
+import { MapPin, Phone, Clock, Facebook, Calendar, ArrowRight, Mail, Search } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -30,19 +30,19 @@ export default function Footer() {
           <div>
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-3 py-1 text-xs text-white/80 font-medium mb-3">
               <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
-              Takes less than 2 minutes
+              100% Free DVSA Tool
             </div>
             <h3 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2">
-              Ready to book your MOT?
+              Is your MOT expiring soon?
             </h3>
-            <p className="text-blue-200">Online booking — quick, easy, no phone call needed.</p>
+            <p className="text-blue-200">Check your full MOT history and status instantly.</p>
           </div>
           <Link
-            href="/mot-booking"
+            href="/check-mot-status"
             className="inline-flex items-center gap-3 bg-accent-500 hover:bg-accent-600 text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-accent-500/30 hover:shadow-accent-500/50 text-base flex-shrink-0 transition-all duration-300 hover:-translate-y-0.5 group"
           >
-            <Calendar className="w-5 h-5" />
-            Book MOT Online
+            <Search className="w-5 h-5" />
+            Free MOT Check
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
