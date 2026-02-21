@@ -89,7 +89,7 @@ function AppointmentForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-50 border border-gray-100 rounded-2xl p-8 md:p-10">
+    <form id="make-appointment-form" onSubmit={handleSubmit} className="bg-gray-50 border border-gray-100 rounded-2xl p-8 md:p-10">
       <h2 className="text-2xl font-heading font-bold text-gray-900 mb-1">
         Appointment Booking Form
       </h2>

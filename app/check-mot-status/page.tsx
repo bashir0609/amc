@@ -89,7 +89,7 @@ export default function CheckMotStatusPage() {
               </p>
 
               {/* Search Form */}
-              <form onSubmit={handleFetchHistory} className="max-w-2xl mx-auto flex flex-col sm:flex-row gap-3">
+              <form id="check-mot-status-form" onSubmit={handleFetchHistory} className="max-w-2xl mx-auto flex flex-col sm:flex-row gap-3">
                 <div className="relative flex-1">
                   <input
                     type="text"

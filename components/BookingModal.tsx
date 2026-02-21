@@ -207,7 +207,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           )}
 
           {step === "details" && selectedDate && selectedTime && (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form id="booking-modal-form" onSubmit={handleSubmit} className="space-y-6">
               {/* Booking Summary */}
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                 <div className="flex items-center space-x-2 text-green-700 mb-2">

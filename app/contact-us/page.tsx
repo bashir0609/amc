@@ -183,7 +183,7 @@ export default function ContactPage() {
                   Got a car problem? Attach a photo and we&apos;ll quote you for free.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form id="contact-us-form" onSubmit={handleSubmit} className="space-y-4">
                   {/* Name + Phone row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>

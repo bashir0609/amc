@@ -331,7 +331,7 @@ function MOTBookingForm() {
                     Enter Your Details
                   </h2>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form id="mot-booking-form" onSubmit={handleSubmit} className="space-y-6">
                     {/* Booking Summary */}
                     <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                       <div className="flex items-center space-x-2 text-green-700 mb-2">
