@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -28,6 +29,14 @@ export default function RootLayout({
     <html lang="en" data-scroll-behavior="smooth">
       <body className="antialiased">
         {children}
+        
+        {/* Start of HubSpot Embed Code */}
+        <Script
+          id="hs-script-loader"
+          strategy="afterInteractive"
+          src="//js-eu1.hs-scripts.com/147845093.js"
+        />
+        {/* End of HubSpot Embed Code */}
       </body>
     </html>
   );
