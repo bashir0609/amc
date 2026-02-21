@@ -96,7 +96,7 @@ export default function CheckMotStatusPage() {
                     value={vrm}
                     onChange={(e) => setVrm(e.target.value.toUpperCase())}
                     placeholder="ENTER REGISTRATION (e.g. AB12CDE)"
-                    className="w-full pl-6 pr-4 py-4 text-lg font-bold text-center sm:text-left text-gray-900 bg-white border-2 border-transparent rounded-xl focus:ring-4 focus:ring-primary-500/30 focus:border-primary-500 uppercase placeholder:text-gray-400 placeholder:font-normal placeholder:lowercase transition-all shadow-xl"
+                    className="w-full pl-6 sm:pl-16 pr-4 py-4 text-lg font-bold text-center sm:text-left text-gray-900 bg-white border-2 border-transparent rounded-xl focus:ring-4 focus:ring-primary-500/30 focus:border-primary-500 uppercase placeholder:text-gray-400 placeholder:font-normal placeholder:lowercase transition-all shadow-xl"
                     required
                   />
                   {/* UK License Plate Stylistic Touch */}
