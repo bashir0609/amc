@@ -35,8 +35,6 @@ function MOTBookingForm() {
 
   useEffect(() => {
     if (vrmParam) {
-      // Step to Details to immediately show the form with pre-filled vehicle
-      setStep("details");
       setFormData(prev => ({ ...prev, vehicleReg: vrmParam }));
       
       // Auto-trigger fetch if vrm parameter is provided
