@@ -22,6 +22,7 @@ export default function Header() {
     { href: "/services", label: "Services" },
     { href: "/gallery", label: "Gallery" },
     { href: "/about", label: "About" },
+    { href: "/check-mot-status", label: "Free MOT Check" },
     { href: "/contact-us", label: "Contact Us" },
   ];
 
