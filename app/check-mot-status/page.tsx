@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import PageHero from "@/components/PageHero";
 import Link from "next/link";
 import { Search, Car, Calendar, Gauge, FileText, CheckCircle2, XCircle } from "lucide-react";
 import { MOTHistoryResponse } from "@/lib/mot-api";
@@ -86,7 +85,7 @@ export default function CheckMotStatusPage() {
                 Check MOT Status & History
               </h1>
               <p className="text-lg md:text-xl text-gray-300 mb-10">
-                Instantly view your vehicle's complete MOT history, mileage records, and current expiry date. 100% Free.
+                Instantly view your vehicle&apos;s complete MOT history, mileage records, and current expiry date. 100% Free.
               </p>
 
               {/* Search Form */}
