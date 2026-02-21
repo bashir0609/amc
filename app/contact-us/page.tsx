@@ -163,7 +163,7 @@ export default function ContactPage() {
                 {/* Map */}
                 <div className="rounded-2xl overflow-hidden shadow-md border border-gray-100">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2480.123456789!2d0.0!3d51.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDMwJzAwLjAiTiAwwrAwMCcwMC4wIkU!5e0!3m2!1sen!2suk!4v1234567890"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2387.498427815047!2d0.055298276320609185!3d51.54642890785191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a64fe2e50fe9%3A0x14671874c9ec4f86!2s4%20Rectory%20Rd%2C%20London%20E12%206JA%2C%20UK!5e1!3m2!1sen!2sus!4v1771662630462!5m2!1sen!2sus"
                     width="100%"
                     height="260"
                     style={{ border: 0 }}
