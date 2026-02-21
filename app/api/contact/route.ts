@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { submitToHubspot } from "@/lib/hubspot";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -88,6 +89,22 @@ export async function POST(request: NextRequest) {
         </div>
       `,
     });
+
+    // Fire-and-forget HubSpot CRM sync
+    const formName = isRepairQuote ? "Repair Quote Form" : "Contact Us Form";
+    
+    // We do not await this, so the frontend UI returns success immediately
+    submitToHubspot({
+      email,
+      name,
+      phone,
+      formName,
+      messageDetails: `
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong><br/> ${message.replace(/\n/g, "<br/>")}</p>
+        ${attachments.length > 0 ? `<p><em>Customer attached ${attachments.length} photos.</em></p>` : ""}
+      `
+    }).catch(err => console.error("Non-fatal HubSpot Sync Error:", err));
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resend } from "@/lib/resend";
+import { submitToHubspot } from "@/lib/hubspot";
 
 export async function POST(request: NextRequest) {
   try {
@@ -106,6 +107,31 @@ export async function POST(request: NextRequest) {
         <p>Best regards,<br>Auto MOT Centre Team</p>
       `,
     });
+
+    // Fire-and-forget HubSpot CRM Sync
+    const nameStr = formData.fullName || formData.name;
+    const formName = type === "mot" ? "MOT Booking Form" : (type === "appointment" ? "Service Appointment Form" : "General Enquiry");
+    
+    // Parse out vehicle information exclusively for HubSpot custom fields
+    let vehicleReg, vehicleMake, vehicleModel, motDate;
+    if (type === "mot") {
+       vehicleReg = formData.vehicleReg;
+       vehicleMake = formData.vehicleMake;
+       vehicleModel = formData.vehicleModel;
+       motDate = formData.preferredDate; // Approximation of MOT intent, technically it's booking date
+    }
+
+    submitToHubspot({
+      email: formData.email,
+      name: nameStr,
+      phone: formData.phone,
+      formName,
+      messageDetails: htmlContent, // the same rich html that went into the email
+      vehicleReg,
+      vehicleMake,
+      vehicleModel,
+      motDate
+    }).catch(err => console.error("Non-fatal HubSpot Sync Error:", err));
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
