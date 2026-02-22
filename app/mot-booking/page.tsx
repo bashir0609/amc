@@ -540,7 +540,7 @@ function MOTBookingForm() {
                     £40.00
                   </p>
                   <p className="text-sm text-primary-600 mt-1">
-                    Maximum fee set by DVSA
+                    
                   </p>
                 </div>
               </div>

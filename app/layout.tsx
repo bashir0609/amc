@@ -33,7 +33,7 @@ export default function RootLayout({
         {/* Start of HubSpot Embed Code */}
         <Script
           id="hs-script-loader"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="//js-eu1.hs-scripts.com/147845093.js"
         />
         {/* End of HubSpot Embed Code */}
