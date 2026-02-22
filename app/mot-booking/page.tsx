@@ -539,9 +539,6 @@ function MOTBookingForm() {
                   <p className="text-2xl font-bold text-primary-700">
                     £40.00
                   </p>
-                  <p className="text-sm text-primary-600 mt-1">
-                    
-                  </p>
                 </div>
               </div>
             </div>

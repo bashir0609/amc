@@ -16,7 +16,7 @@ export default function ServicesPage() {
         "Free retest within 10 working days",
         "Detailed report provided",
       ],
-      price: "From £35",
+      price: "From £40",
     },
     {
       icon: Wrench,
