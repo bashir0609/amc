@@ -1,0 +1,66 @@
+{
+  "name": "Auto MOT Centre Ltd",
+  "description": "DVSA-authorised independent garage in Manor Park, London, offering MOT testing, full and interim car servicing, diagnostics, oil changes, and general repairs for all makes and models.",
+  "url": "https://automotcentre.com",
+  "version": "1.0",
+  "capabilities": [
+    {
+      "id": "book-mot",
+      "name": "Book an MOT Test",
+      "description": "Schedule a Class 4 MOT test online. Tests from £40, completed in approximately 45 minutes.",
+      "endpoint": "https://automotcentre.com/mot-booking",
+      "input": {
+        "vehicle_registration": "string",
+        "preferred_date": "date",
+        "contact_name": "string",
+        "contact_phone": "string"
+      }
+    },
+    {
+      "id": "book-service",
+      "name": "Book a Car Service",
+      "description": "Schedule a Full Service, Interim Service, oil change, or other maintenance.",
+      "endpoint": "https://automotcentre.com/make-an-appointment",
+      "input": {
+        "service_type": "string",
+        "vehicle_registration": "string",
+        "preferred_date": "date"
+      }
+    },
+    {
+      "id": "check-mot-status",
+      "name": "Check MOT Status",
+      "description": "Look up the current MOT status and expiry date for any UK-registered vehicle.",
+      "endpoint": "https://automotcentre.com/check-mot-status",
+      "input": {
+        "vehicle_registration": "string"
+      }
+    },
+    {
+      "id": "contact",
+      "name": "Contact the Garage",
+      "description": "Send a message or request a callback from the team.",
+      "endpoint": "https://automotcentre.com/contact-us",
+      "input": {
+        "name": "string",
+        "email": "string",
+        "message": "string"
+      }
+    }
+  ],
+  "contact": {
+    "telephone": "+4402085539112",
+    "email": "info@automotcentre.com",
+    "address": {
+      "streetAddress": "4 Rectory Rd",
+      "addressLocality": "Manor Park",
+      "addressRegion": "London",
+      "postalCode": "E12 6JA",
+      "addressCountry": "GB"
+    }
+  },
+  "openingHours": {
+    "mondayToSaturday": "09:00-18:00",
+    "sunday": "10:00-16:00"
+  }
+}

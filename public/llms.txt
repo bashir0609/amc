@@ -1,0 +1,63 @@
+# Auto MOT Centre Ltd — llms.txt
+
+> Auto MOT Centre Ltd is a DVSA-authorised, family-owned independent garage located at 4 Rectory Rd, Manor Park, London, E12 6JA. Established in 1990, we have served over 5,000 customers across East London.
+
+## What We Do
+
+We provide the following automotive services for all makes and models of cars and light vans (Class 4 vehicles):
+
+- **MOT Testing** — DVSA-authorised Class 4 MOT tests from £40, typically completed in 45 minutes. Free retest within 10 working days.
+- **Full Service** — Comprehensive annual service from £120, following AUTODATA manufacturer specifications.
+- **Interim Service** — Essential 6-monthly maintenance from £80, including oil change and safety checks.
+- **Oil Change** — Premium oil change from £45 using the correct grade specified by AUTODATA for your vehicle.
+- **Vehicle Diagnostics** — Electronic fault code reading and system diagnostics from £30.
+- **Repairs** — Brakes, clutch, suspension, exhaust, steering, and general mechanical repairs. Quoted in advance.
+
+## Our Team
+
+- **A. Haque** — CEO & Founder, 30+ years automotive experience
+- **J. Ahmed** — Senior MOT Tester & Mechanic, DVSA-certified, 15+ years
+- **R. Haque** — Mechanic & Service Technician, AUTODATA-trained, 10+ years
+
+## Contact & Location
+
+- **Address:** 4 Rectory Rd, Manor Park, London, E12 6JA
+- **Telephone:** 020 8553 9112
+- **Email:** info@automotcentre.com
+- **Website:** https://automotcentre.com
+- **Google Maps:** https://maps.app.goo.gl/LrM9s7a8T2bqV4qQ9
+
+## Opening Hours
+
+- Monday – Saturday: 9:00 AM – 6:00 PM
+- Sunday: 10:00 AM – 4:00 PM
+- Lunch break: 12:15 – 12:40 PM daily
+
+## Key Facts
+
+- DVSA-authorised MOT testing station
+- All servicing performed to AUTODATA manufacturer specifications
+- Quality OEM-grade parts used on all repairs
+- 12-month / 12,000-mile labour warranty on all repairs
+- 4.9★ Google rating from 120+ verified customer reviews
+- Family business, established 1990
+
+## Pages
+
+- Home: https://automotcentre.com/
+- Services overview: https://automotcentre.com/services
+- MOT Testing: https://automotcentre.com/services/mot-testing
+- Full Service: https://automotcentre.com/services/full-service
+- Interim Service: https://automotcentre.com/services/interim-service
+- Oil Change: https://automotcentre.com/services/oil-change
+- Diagnostics: https://automotcentre.com/services/diagnostics
+- Repairs: https://automotcentre.com/services/repairs
+- Book an MOT: https://automotcentre.com/mot-booking
+- Book an Appointment: https://automotcentre.com/make-an-appointment
+- Check MOT Status: https://automotcentre.com/check-mot-status
+- About Us: https://automotcentre.com/about
+- FAQ: https://automotcentre.com/faq
+- Contact Us: https://automotcentre.com/contact-us
+- Shop: https://automotcentre.com/shop
+- Privacy Policy: https://automotcentre.com/privacy-policy
+- Terms & Conditions: https://automotcentre.com/terms-and-conditions

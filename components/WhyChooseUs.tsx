@@ -5,9 +5,9 @@ export default function WhyChooseUs() {
     {
       icon: Wrench,
       number: "01",
-      title: "Expert Mechanics",
+      title: "Qualified & Certified",
       description:
-        "Our certified technicians have decades of combined experience, ensuring your car is always in the best hands.",
+        "All work is carried out by DVSA-certified testers and AUTODATA-trained technicians — the same rigorous standards as main dealerships, without the premium price.",
       iconGradient: "from-accent-500 to-red-400",
       numberColor: "text-accent-500/15",
       border: "hover:border-accent-500/30",

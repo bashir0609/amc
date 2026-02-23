@@ -17,8 +17,8 @@ export default function QuickActions() {
     {
       icon: Camera,
       eyebrow: "Free Estimate",
-      title: "Get a Free Repair Quote",
-      description: "Send us a photo of the problem and we'll give you an honest, no-obligation estimate.",
+      title: "Get a Free Vehicle Estimate",
+      description: "Send us a photo of your car and we'll give you an honest, no-obligation price — fast and transparent.",
       link: "/contact-us",
       linkText: "Send a photo",
       gradient: "from-primary-800 to-primary-600",
