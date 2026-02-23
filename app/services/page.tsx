@@ -1,87 +1,53 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Wrench, Gauge, Battery, CheckCircle2, Car, Droplet } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import JsonLd from "@/components/JsonLd";
+import type { Metadata } from "next";
+import { services } from "@/lib/services-data";
+
+export const metadata: Metadata = {
+  title: "Car Services & Repairs | Auto MOT Centre | Manor Park",
+  description: "Comprehensive car servicing, MOT testing, diagnostics, and repairs in Manor Park, London. Quality service using AUTODATA specifications at competitive prices.",
+};
 
 export default function ServicesPage() {
-  const services = [
-    {
-      icon: Gauge,
-      title: "MOT Testing",
-      description: "Comprehensive MOT testing for vehicles up to class 4",
-      features: [
-        "Quick turnaround (typically 45 minutes)",
-        "Competitive pricing",
-        "Free retest within 10 working days",
-        "Detailed report provided",
-      ],
-      price: "From £40",
-    },
-    {
-      icon: Wrench,
-      title: "Full Service",
-      description: "Complete vehicle servicing based on manufacturer specifications",
-      features: [
-        "Oil and filter change",
-        "Brake inspection and adjustment",
-        "Fluid level checks and top-ups",
-        "Multi-point safety inspection",
-      ],
-      price: "From £120",
-    },
-    {
-      icon: Car,
-      title: "Interim Service",
-      description: "Essential maintenance to keep your vehicle running smoothly",
-      features: [
-        "Oil and filter change",
-        "Visual brake check",
-        "Tire pressure check",
-        "Lights and signals check",
-      ],
-      price: "From £80",
-    },
-    {
-      icon: Droplet,
-      title: "Oil Change",
-      description: "Quality oil change using AUTODATA specifications",
-      features: [
-        "Premium quality oil",
-        "New oil filter",
-        "Manufacturer specification compliance",
-        "Quick service",
-      ],
-      price: "From £45",
-    },
-    {
-      icon: Battery,
-      title: "Diagnostics",
-      description: "Advanced vehicle diagnostics and fault finding",
-      features: [
-        "Electronic fault code reading",
-        "System diagnostics",
-        "Problem identification",
-        "Repair recommendations",
-      ],
-      price: "From £30",
-    },
-    {
-      icon: Wrench,
-      title: "Repairs",
-      description: "General vehicle repairs and maintenance",
-      features: [
-        "Brake repairs and replacement",
-        "Suspension work",
-        "Exhaust repairs",
-        "General mechanical repairs",
-      ],
-      price: "Quote on request",
-    },
-  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does an MOT cost at Auto MOT Centre?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our MOT testing starts from £40 for vehicles up to class 4. We also offer a free retest within 10 working days if your vehicle fails."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in a Full Service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Full Service starts from £120 and includes an oil and filter change, brake inspection and adjustment, fluid level checks and top-ups, and a multi-point safety inspection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you use manufacturer-approved parts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, all our services are carried out using AUTODATA specifications. We use quality parts and premium oils to ensure your vehicle is maintained according to manufacturer standards."
+        }
+      }
+    ]
+  };
 
   return (
     <>
+      <JsonLd data={faqSchema} />
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
@@ -99,7 +65,7 @@ export default function ServicesPage() {
                 return (
                   <div
                     key={index}
-                    className="card group hover:-translate-y-2"
+                    className="card group hover:-translate-y-2 flex flex-col"
                   >
                     <div className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       <Icon className="w-8 h-8 text-white" />
@@ -108,8 +74,8 @@ export default function ServicesPage() {
                       {service.title}
                     </h3>
                     <p className="text-gray-600 mb-4">{service.description}</p>
-                    <ul className="space-y-2 mb-6">
-                      {service.features.map((feature, i) => (
+                    <ul className="space-y-2 mb-6 flex-1">
+                      {service.features.slice(0, 4).map((feature, i) => (
                         <li key={i} className="flex items-start space-x-2">
                           <CheckCircle2 className="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" />
                           <span className="text-gray-700">{feature}</span>
@@ -120,12 +86,20 @@ export default function ServicesPage() {
                       <div className="text-2xl font-bold text-primary-700 mb-4">
                         {service.price}
                       </div>
-                      <Link
-                        href={`/make-an-appointment?service=${encodeURIComponent(service.title)}`}
-                        className="btn-primary w-full text-center block"
-                      >
-                        Book Now
-                      </Link>
+                      <div className="flex gap-2">
+                        <Link
+                          href={`/make-an-appointment?service=${encodeURIComponent(service.title)}`}
+                          className="btn-primary flex-1 text-center block"
+                        >
+                          Book Now
+                        </Link>
+                        <Link
+                          href={`/services/${service.slug}`}
+                          className="flex items-center gap-1 px-4 py-2 rounded-xl border-2 border-primary-200 text-primary-700 hover:bg-primary-50 font-semibold transition-all text-sm whitespace-nowrap"
+                        >
+                          Learn More <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 );

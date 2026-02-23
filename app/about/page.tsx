@@ -2,6 +2,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CheckCircle2, Award, Users, Target } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | Auto MOT Centre | Manor Park",
+  description: "Learn about Auto MOT Centre. We are a family-owned independent garage in Manor Park, London, with over 30 years of experience providing MOT testing and vehicle servicing.",
+};
 
 export default function AboutPage() {
   const values = [

@@ -10,6 +10,7 @@ export default function Footer() {
     { href: "/shop", label: "Shop" },
     { href: "/gallery", label: "Gallery" },
     { href: "/about", label: "About" },
+    { href: "/faq", label: "FAQ" },
     { href: "/check-mot-status", label: "Free MOT Check" },
     { href: "/contact-us", label: "Contact Us" },
   ];
@@ -171,8 +172,15 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/8 py-5">
-        <div className="container-custom px-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-blue-400">
+        <div className="container-custom px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-blue-400 text-center md:text-left">
           <p>AMC © {currentYear} — All Rights Reserved</p>
+          
+          <div className="flex items-center gap-4">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <span className="text-white/20">|</span>
+            <Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
+          </div>
+
           <a
             href="https://www.islahwebservice.com/"
             target="_blank"
