@@ -67,7 +67,17 @@ export default function RootLayout({
         "opens": "10:00",
         "closes": "16:00"
       }
-    ]
+    ],
+    "sameAs": [
+      "https://www.facebook.com/automotcentre",
+      "https://maps.app.goo.gl/LrM9s7a8T2bqV4qQ9",
+      "https://www.google.com/maps/place/Auto+MOT+Centre+Ltd"
+    ],
+    "foundingDate": "1990",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": 3
+    }
   };
 
   return (

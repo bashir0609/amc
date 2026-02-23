@@ -2,6 +2,40 @@
 
 import { useState } from "react";
 import { Star, ChevronLeft, ChevronRight, ExternalLink, Quote } from "lucide-react";
+import JsonLd from "@/components/JsonLd";
+
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Auto MOT Centre Ltd",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "120",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "S J" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "reviewBody": "I have been going to Auto Mot Centre for roughly 7yrs now. They are honest, reliable and trustworthy."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Jonny Cawston" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "reviewBody": "Great service. MOT done straight away, car back 45 mins later and a pass. Thank you Raf."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "M K R" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "reviewBody": "Booked online and MOT done next day. Warmly greeted on arrival. Recommended for a seamless, hassle free service."
+    }
+  ]
+};
 
 const avatarGradients = [
   "from-primary-600 to-primary-800",
@@ -35,6 +69,7 @@ export default function Testimonials() {
 
   return (
     <section className="section-padding bg-gray-50 relative overflow-hidden">
+      <JsonLd data={reviewSchema} />
       {/* Subtle background orb */}
       <div className="absolute top-0 right-0 w-[40%] h-[80%] bg-primary-100/50 rounded-full blur-[100px] pointer-events-none" />
 
