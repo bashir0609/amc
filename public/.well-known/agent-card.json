@@ -3,49 +3,72 @@
   "description": "DVSA-authorised independent garage in Manor Park, London, offering MOT testing, full and interim car servicing, diagnostics, oil changes, and general repairs for all makes and models.",
   "url": "https://automotcentre.com",
   "version": "1.0",
-  "capabilities": [
+  "skills": [
     {
       "id": "book-mot",
       "name": "Book an MOT Test",
-      "description": "Schedule a Class 4 MOT test online. Tests from £40, completed in approximately 45 minutes.",
-      "endpoint": "https://automotcentre.com/mot-booking",
-      "input": {
-        "vehicle_registration": "string",
-        "preferred_date": "date",
-        "contact_name": "string",
-        "contact_phone": "string"
-      }
+      "description": "Schedule a Class 4 MOT test online. Tests start from £40 and are typically completed in approximately 45 minutes. A free retest is offered within 10 working days.",
+      "tags": ["MOT", "booking", "car test", "vehicle inspection", "DVSA"],
+      "examples": [
+        "Book an MOT for my car",
+        "I need an MOT test in Manor Park",
+        "Schedule an MOT at Auto MOT Centre"
+      ]
     },
     {
       "id": "book-service",
-      "name": "Book a Car Service",
-      "description": "Schedule a Full Service, Interim Service, oil change, or other maintenance.",
-      "endpoint": "https://automotcentre.com/make-an-appointment",
-      "input": {
-        "service_type": "string",
-        "vehicle_registration": "string",
-        "preferred_date": "date"
-      }
+      "name": "Book a Car Service or Maintenance",
+      "description": "Schedule a Full Service (from £120), Interim Service (from £80), oil change (from £45), or any other vehicle maintenance appointment.",
+      "tags": ["car service", "full service", "interim service", "oil change", "vehicle maintenance"],
+      "examples": [
+        "Book a full service for my car",
+        "I need an oil change",
+        "Schedule an interim service in East London"
+      ]
     },
     {
       "id": "check-mot-status",
       "name": "Check MOT Status",
-      "description": "Look up the current MOT status and expiry date for any UK-registered vehicle.",
-      "endpoint": "https://automotcentre.com/check-mot-status",
-      "input": {
-        "vehicle_registration": "string"
-      }
+      "description": "Look up the current MOT status, expiry date, and test history for any UK-registered vehicle using its registration number.",
+      "tags": ["MOT check", "MOT status", "vehicle check", "MOT expiry", "DVLA"],
+      "examples": [
+        "Check when my MOT expires",
+        "Look up MOT status for registration AB12 CDE",
+        "Is my car's MOT still valid?"
+      ]
+    },
+    {
+      "id": "vehicle-diagnostics",
+      "name": "Vehicle Diagnostics",
+      "description": "Advanced electronic fault code reading and system diagnostics for all makes and models. Includes engine, ABS, airbag, and transmission diagnostics from £30.",
+      "tags": ["diagnostics", "engine warning light", "fault codes", "OBD", "car check"],
+      "examples": [
+        "My engine warning light is on",
+        "I need a diagnostic check in Manor Park",
+        "Read fault codes for my car"
+      ]
+    },
+    {
+      "id": "vehicle-repairs",
+      "name": "Vehicle Repairs",
+      "description": "Professional repair of brakes, clutch, suspension, exhaust, steering, and all mechanical components. All work quoted transparently in advance.",
+      "tags": ["car repair", "brake repair", "exhaust repair", "suspension", "mechanical repair"],
+      "examples": [
+        "Get a quote for brake replacement",
+        "Fix my car's suspension",
+        "I need an exhaust repair in East London"
+      ]
     },
     {
       "id": "contact",
       "name": "Contact the Garage",
-      "description": "Send a message or request a callback from the team.",
-      "endpoint": "https://automotcentre.com/contact-us",
-      "input": {
-        "name": "string",
-        "email": "string",
-        "message": "string"
-      }
+      "description": "Send a message, request a callback, or get a free vehicle estimate from the team at Auto MOT Centre.",
+      "tags": ["contact", "quote", "enquiry", "callback", "estimate"],
+      "examples": [
+        "Contact Auto MOT Centre",
+        "Get a free estimate for my car",
+        "Send a message to the garage"
+      ]
     }
   ],
   "contact": {
