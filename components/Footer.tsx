@@ -8,10 +8,7 @@ export default function Footer() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
-    { href: "/shop", label: "Shop" },
-    { href: "/gallery", label: "Gallery" },
     { href: "/about", label: "About" },
-    { href: "/faq", label: "FAQ" },
     { href: "/check-mot-status", label: "Free MOT Check" },
     { href: "/contact-us", label: "Contact Us" },
   ];
@@ -175,6 +172,8 @@ export default function Footer() {
           <p>AMC © {currentYear} — All Rights Reserved</p>
           
           <div className="flex items-center gap-4">
+            <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+            <span className="text-white/20">|</span>
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <span className="text-white/20">|</span>
             <Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
