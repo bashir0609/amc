@@ -107,7 +107,7 @@ export default function Footer() {
                 <div className="w-7 h-7 bg-white/8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
                   <MapPin className="w-3.5 h-3.5 text-accent-400" />
                 </div>
-                <span>4 Rectory Rd, London, E12 6JA</span>
+                <span>4 Rectory Rd, Manor Park, London, E12 6JA</span>
               </li>
               <li className="flex items-center gap-3 text-sm">
                 <div className="w-7 h-7 bg-white/8 rounded-lg flex items-center justify-center flex-shrink-0">
