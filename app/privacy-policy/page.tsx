@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
+import ProtectedEmail from "@/components/ProtectedEmail";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -81,7 +82,7 @@ export default function PrivacyPolicyPage() {
                 <li>Request restriction of processing your personal data.</li>
               </ul>
               <p>
-                If you wish to exercise any of the rights set out above, please contact us at <a href="mailto:info@automotcentre.com" className="text-primary-600 hover:underline">info@automotcentre.com</a>.
+                If you wish to exercise any of the rights set out above, please contact us at <ProtectedEmail className="text-primary-600 hover:underline" />.
               </p>
 
             </div>

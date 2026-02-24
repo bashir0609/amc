@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Clock, Facebook, ArrowRight, Mail, Search } from "lucide-react";
+import ProtectedEmail from "@/components/ProtectedEmail";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -128,9 +129,7 @@ export default function Footer() {
                 <div className="w-7 h-7 bg-white/8 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Mail className="w-3.5 h-3.5 text-accent-400" />
                 </div>
-                <a href="mailto:info@automotcentre.com" className="text-blue-300 hover:text-white transition-colors">
-                  info@automotcentre.com
-                </a>
+                <ProtectedEmail className="text-blue-300 hover:text-white transition-colors" />
               </li>
             </ul>
           </div>

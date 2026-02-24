@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import ProtectedEmail from "@/components/ProtectedEmail";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -65,9 +66,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-gray-900 mb-1">Email</h3>
-                      <a href="mailto:info@automotcentre.com" className="text-primary-700 hover:text-accent-500 font-semibold transition-colors">
-                        info@automotcentre.com
-                      </a>
+                      <ProtectedEmail className="text-primary-700 hover:text-accent-500 font-semibold transition-colors" />
                     </div>
                   </div>
 

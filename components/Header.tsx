@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Calendar, Mail, Clock } from "lucide-react";
+import ProtectedEmail from "@/components/ProtectedEmail";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,10 +40,10 @@ export default function Header() {
               <Phone className="w-3 h-3" />
               <span>0208 553 9112</span>
             </a>
-            <a href="mailto:info@automotcentre.com" className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
+            <span className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
               <Mail className="w-3 h-3" />
-              <span>info@automotcentre.com</span>
-            </a>
+              <ProtectedEmail className="hover:text-white transition-colors" />
+            </span>
           </div>
           <div className="flex items-center gap-1.5 text-gray-400">
             <Clock className="w-3 h-3" />

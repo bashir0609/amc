@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
+import ProtectedEmail from "@/components/ProtectedEmail";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -68,7 +69,7 @@ export default function TermsAndConditionsPage() {
                 <strong>Auto MOT Centre Ltd</strong><br />
                 4 Rectory Rd, London, E12 6JA<br />
                 Phone: 020 8553 9112<br />
-                Email: <a href="mailto:info@automotcentre.com" className="text-primary-600 hover:underline">info@automotcentre.com</a>
+                Email: <ProtectedEmail className="text-primary-600 hover:underline" />
               </p>
 
             </div>

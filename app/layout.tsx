@@ -88,6 +88,26 @@ export default function RootLayout({
       <body className="antialiased">
         {children}
         
+        {/* Google Analytics */}
+        <Script
+          id="gtag-js"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-5P8MCHQVSX"
+        />
+        <Script
+          id="gtag-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-5P8MCHQVSX');
+            `,
+          }}
+        />
+        {/* End Google Analytics */}
+
         {/* Start of HubSpot Embed Code */}
         <Script
           id="hs-script-loader"
