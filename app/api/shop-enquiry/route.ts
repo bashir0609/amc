@@ -1,10 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resend } from "@/lib/resend";
+import { isHoneypotFilled, isRateLimited, containsNonLatinScript, getClientIp } from "@/lib/spam-check";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, reg, date, notes, cart, total } = body;
+    const { name, email, phone, reg, date, notes, cart, total, _hp } = body;
+
+    // ── Spam checks ────────────────────────────────────────────────────────
+    if (isHoneypotFilled(_hp)) {
+      return NextResponse.json({ success: false }, { status: 400 });
+    }
+
+    const ip = getClientIp(request.headers);
+    if (isRateLimited(ip, "shop-enquiry")) {
+      return NextResponse.json(
+        { success: false, error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
+    if (containsNonLatinScript([name, notes])) {
+      return NextResponse.json({ success: false }, { status: 400 });
+    }
+    // ───────────────────────────────────────────────────────────────────────
 
     const itemsHtml = cart
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

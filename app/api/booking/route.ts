@@ -1,11 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resend } from "@/lib/resend";
 import { submitToHubspot } from "@/lib/hubspot";
+import { isHoneypotFilled, isRateLimited, containsNonLatinScript, getClientIp } from "@/lib/spam-check";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { type, ...formData } = body;
+    const { type, _hp, ...formData } = body;
+
+    // ── Spam checks ────────────────────────────────────────────────────────
+    if (isHoneypotFilled(_hp)) {
+      return NextResponse.json({ success: false }, { status: 400 });
+    }
+
+    const ip = getClientIp(request.headers);
+    if (isRateLimited(ip, "booking")) {
+      return NextResponse.json(
+        { success: false, error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
+    const nameStr = formData.fullName || formData.name || "";
+    const messageStr = formData.message || formData.additionalNotes || "";
+    if (containsNonLatinScript([nameStr, messageStr])) {
+      return NextResponse.json({ success: false }, { status: 400 });
+    }
+    // ───────────────────────────────────────────────────────────────────────
 
     // Prepare email content based on booking type
     let subject = "";
@@ -108,8 +129,7 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    // Fire-and-forget HubSpot CRM Sync
-    const nameStr = formData.fullName || formData.name;
+    // Fire-and-forget HubSpot CRM Sync — nameStr already declared above for script check
     const formName = type === "mot" ? "MOT Booking Form" : (type === "appointment" ? "Service Appointment Form" : "General Enquiry");
     
     // Parse out vehicle information exclusively for HubSpot custom fields

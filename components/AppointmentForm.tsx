@@ -29,6 +29,7 @@ export default function AppointmentForm() {
     preferredDate: "",
     preferredTime: "",
     message: "",
+    _hp: "", // honeypot — must remain empty
   });
 
   // Pre-select service from URL param on mount
@@ -67,6 +68,7 @@ export default function AppointmentForm() {
           preferredDate: "",
           preferredTime: "",
           message: "",
+          _hp: "",
         });
       } else {
         setSubmitStatus("error");
@@ -258,6 +260,18 @@ export default function AppointmentForm() {
           placeholder="Describe any issues or special requirements..."
         />
       </div>
+
+      {/* Honeypot anti-spam — hidden from real users */}
+      <input
+        type="text"
+        name="_hp"
+        value={formData._hp}
+        onChange={handleChange}
+        style={{ display: "none" }}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
 
       <button
         type="submit"

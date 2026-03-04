@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { submitToHubspot } from "@/lib/hubspot";
+import { isHoneypotFilled, isRateLimited, containsNonLatinScript, getClientIp } from "@/lib/spam-check";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -8,12 +9,32 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
 
+    // ── Spam checks ────────────────────────────────────────────────────────
+    const honeypot = formData.get("_hp") as string | null;
+    if (isHoneypotFilled(honeypot)) {
+      return NextResponse.json({ success: false }, { status: 400 });
+    }
+
+    const ip = getClientIp(request.headers);
+    if (isRateLimited(ip, "contact")) {
+      return NextResponse.json(
+        { success: false, error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+    // ───────────────────────────────────────────────────────────────────────
+
     const type = formData.get("type") as string;
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = (formData.get("phone") as string) || "Not provided";
     const subject = formData.get("subject") as string;
     const message = formData.get("message") as string;
+
+    // Script check — after fields are parsed
+    if (containsNonLatinScript([name, message])) {
+      return NextResponse.json({ success: false }, { status: 400 });
+    }
 
     // Collect photo attachments
     const photoFiles = formData.getAll("photos") as File[];

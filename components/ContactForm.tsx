@@ -10,6 +10,7 @@ export default function ContactForm() {
     phone: "",
     subject: "",
     message: "",
+    _hp: "", // honeypot — must remain empty
   });
 
   const [photos, setPhotos] = useState<File[]>([]);
@@ -59,7 +60,7 @@ export default function ContactForm() {
 
       if (response.ok) {
         setSubmitStatus("success");
-        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "", _hp: "" });
         setPhotos([]);
         setPhotoPreviews([]);
       } else {
@@ -224,6 +225,18 @@ export default function ContactForm() {
             </div>
           )}
         </div>
+
+        {/* Honeypot anti-spam — hidden from real users */}
+        <input
+          type="text"
+          name="_hp"
+          value={formData._hp}
+          onChange={handleChange}
+          style={{ display: "none" }}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
 
         <button
           type="submit"
